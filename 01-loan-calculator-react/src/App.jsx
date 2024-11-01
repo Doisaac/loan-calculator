@@ -1,7 +1,13 @@
+import Header from './components/Header.jsx';
+
 function App() {
+  // Código JavaScript
+  const hola = 'Hola Mundo';
 
   return (
-    <h1 className="text-6xl">Hola Mundo</h1>
+    <div className="my-20 max-w-lg mx-auto bg-white shadow p-10">
+      <Header />
+    </div>
   )
 }
 
