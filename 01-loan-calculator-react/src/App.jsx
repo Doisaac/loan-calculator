@@ -27,7 +27,7 @@ function App() {
   }
 
   function handleClickIncremento() {
-    const valor = cantidad + STEP;
+    const valor = +cantidad + STEP;
 
     if (valor > MAX) {
       alert('Cantidad no valida');
