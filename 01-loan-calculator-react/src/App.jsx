@@ -74,9 +74,9 @@ function App() {
       </h2>
 
       <select
-       className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg font-bold text-center text-xl text-gray-500"
-       value={meses}
-       onChange={e => setMeses(+e.target.value)}
+        className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg font-bold text-center text-xl text-gray-500"
+        value={meses}
+        onChange={e => setMeses(+e.target.value)}
        >
         <option value="6">6 Meses</option>
         <option value="12">12 Meses</option>
