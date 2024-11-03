@@ -12,6 +12,7 @@ function App() {
 
   // Hooks
   const [cantidad, setCantidad] = useState(10000);
+  const [meses, setMeses] = useState(6);
 
   function handleChange(e) {
     setCantidad(e.target.value);
@@ -67,6 +68,20 @@ function App() {
       <p className="text-center my-10 text-2xl font-extrabold text-indigo-600"> 
         {formatearDinero(cantidad)}
       </p>
+
+      <h2 className="text-2xl font-extrabold text-gray-500 text-center">
+        Elige un <span className="text-indigo-500">Plazo</span> a pagar
+      </h2>
+
+      <select
+       className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg font-bold text-center text-xl text-gray-500"
+       value={meses}
+       onChange={e => setMeses(+e.target.value)}
+       >
+        <option value="6">6 Meses</option>
+        <option value="12">12 Meses</option>
+        <option value="24">24 Meses</option>
+      </select>
 
     </div>
   )
