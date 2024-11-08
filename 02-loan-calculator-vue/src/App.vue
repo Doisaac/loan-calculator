@@ -55,7 +55,7 @@
 
   watch([cantidad, meses], () => {
     total.value = calcularTotal(cantidad.value, meses.value);
-  }, {immediate: true});
+  });
 
 </script>
 
@@ -106,6 +106,7 @@
 
     <div 
       class="my-5 space-y-3 bg-gray-50 p-5"
+      v-if="total > 0"
     >
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
         Resumen <span class="text-indigo-600">de pagos</span>
@@ -123,6 +124,13 @@
         Mensuales:
       </p>
     </div>
+
+    <p 
+      class="text-center text-lg font-semibold"
+      v-else
+    >
+      Añade una cantidad y un plazo a pagar
+    </p>
 
   </div>
 </template>
