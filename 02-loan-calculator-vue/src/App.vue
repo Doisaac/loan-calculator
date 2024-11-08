@@ -57,6 +57,10 @@
     total.value = calcularTotal(cantidad.value, meses.value);
   });
 
+  const pagoMensual = computed(() => {
+    return total.value / meses.value ;
+  });
+
 </script>
 
 <template>
@@ -121,7 +125,7 @@
       </p>
       
       <p class="text-xl text-gray-500 text-center font-bold">
-        Mensuales:
+        Mensuales: {{ formatearDineroTotal(pagoMensual) }}
       </p>
     </div>
 
