@@ -1,7 +1,8 @@
 <script setup>
-  import {ref, computed} from 'vue';
+  import {ref, computed, watch} from 'vue';
   import Header from './components/Header.vue';
   import Button from './components/Button.vue';
+  import {calcularTotal} from './helpers/index.js';
 
   const MIN = 0;
   const MAX = 20000;
@@ -9,16 +10,27 @@
 
   const cantidad = ref(10000);
   const meses = ref(6);
-
+  const total = ref(0);
+  
   const formatearDinero = computed(() => {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
     });
-
+    
     return formatter.format(cantidad.value);
   });
 
+  // Formatea el total
+  const formatearDineroTotal = (valor) => {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
+    
+    return formatter.format(valor);
+  };
+  
   const handleChangeDecremento = () => {
     const valor = cantidad.value - STEP;
 
@@ -40,6 +52,10 @@
 
     cantidad.value = valor;
   };
+
+  watch([cantidad, meses], () => {
+    total.value = calcularTotal(cantidad.value, meses.value);
+  }, {immediate: true});
 
 </script>
 
@@ -88,17 +104,19 @@
       </select>
     </div>
 
-    <div class="my-5 space-y-3 bg-gray-50 p-5">
+    <div 
+      class="my-5 space-y-3 bg-gray-50 p-5"
+    >
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
         Resumen <span class="text-indigo-600">de pagos</span>
       </h2>
 
       <p class="text-xl text-gray-500 text-center font-bold">
-        Meses
+        Meses {{ meses }}
       </p>
 
       <p class="text-xl text-gray-500 text-center font-bold">
-        Total a pagar:
+        Total a pagar: {{ formatearDineroTotal(total) }}
       </p>
       
       <p class="text-xl text-gray-500 text-center font-bold">
